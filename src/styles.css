@@ -30,11 +30,11 @@ main {
 
 .display {
     height: 20%;
-    padding: 1rem 2rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .grid {
