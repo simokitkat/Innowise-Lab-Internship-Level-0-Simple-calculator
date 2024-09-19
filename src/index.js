@@ -1,7 +1,7 @@
 import { handleOperations } from "./handleOperations.js";
 import { resetCalculator } from "./resetCalculator.js";
+// import "./styles.css";
 
-import "./styles.css";
 let operand1 = 0;
 let operand2 = 0;
 let result;
@@ -20,6 +20,7 @@ The plan is to make an operation that consists of two operands and one operator 
 The more operands we add after that, can be included using the result as one of the two possible operands for the operation.
 */
 
+// handle clicking on the numbers buttons
 nums.forEach((num) => {
   num.addEventListener("click", (e) => {
     //make sure result is empty
@@ -33,6 +34,7 @@ nums.forEach((num) => {
   });
 });
 
+// handle clicking on the operators buttons
 operatorsBtns.forEach((operatorBtn) => {
   operatorBtn.addEventListener("click", (e) => {
     const amountOfOperators = operation.match(operatorsRegEx)?.length;
@@ -145,6 +147,41 @@ operatorsBtns.forEach((operatorBtn) => {
       }
     }
   });
+});
+
+// Pressing on the point btn
+point.addEventListener("click", (e) => {
+  if (operation === "" || allOperatorsRegEx.test(operation.at(-1))) {
+    operation += "0.";
+    display.textContent = operation;
+  }
+
+  if (!operation.includes(".")) {
+    operation += ".";
+    display.textContent = operation;
+  } else {
+    // Here we need to check if we have one point and if so we need to check it's location before or after the operator
+
+    const amountOfPoints = operation.split("").filter((e) => e === ".");
+
+    if (amountOfPoints.length > 1) {
+      return;
+    } else {
+      /********************************************************************************
+       * The code here assumes that there is already one point in the operation string *
+       *******************************************************************************/
+
+      if (allOperatorsRegEx.test(operation.slice(1))) {
+        const operator = operation.slice(1).match(allOperatorsRegEx);
+        const operatorIndex = operation.lastIndexOf(operator);
+        const indexOfFirstPoint = operation.indexOf(".");
+
+        operation =
+          indexOfFirstPoint < operatorIndex ? operation + "." : operation;
+        display.textContent = operation;
+      }
+    }
+  }
 });
 
 // Reset Calculator
