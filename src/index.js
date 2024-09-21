@@ -14,6 +14,7 @@ const point = document.querySelector(".point");
 const percent = document.querySelector(".percent");
 const display = document.querySelector(".display");
 const resetBtn = document.querySelector(".reset");
+const plusMinus = document.querySelector(".plus-minus");
 
 /* 
 The plan is to make an operation that consists of two operands and one operator only. 
@@ -55,14 +56,17 @@ operatorsBtns.forEach((operatorBtn) => {
 
       if (operation === "-") {
         resetBtn.click();
-      } else if (operation.slice(1).at(-1) === "-") {
+      } else if (operation.at(-1) === "-") {
         operation = operation.slice(0, -1) + "+";
         display.textContent = operation;
       } else if (operatorsRegEx.test(operation.at(-1))) {
         operation = operation.slice(0, -1) + "-";
         display.textContent = operation;
         console.log(operation);
-      } else if (amountOfOperators === 1 || amountOfMinusOperators === 1) {
+      } else if (
+        amountOfOperators === 1 ||
+        (amountOfMinusOperators === 1 && operation.at(-1) !== "-")
+      ) {
         return;
       } else {
         operation += e.target.textContent;
@@ -186,7 +190,7 @@ point.addEventListener("click", (e) => {
 
 // Pressing on the percent btn
 percent.addEventListener("click", (e) => {
-  // 1) if the last character in the operation string we need to return
+  // 1) if the last character in the operation string is an operator we need to return
   if (allOperatorsRegEx.test(operation.at(-1))) {
     return;
   }
@@ -210,6 +214,50 @@ percent.addEventListener("click", (e) => {
   } else {
     // 2) handling percent if there is NO operator in the operation string
     operation = (operation / 100).toString();
+    display.textContent = operation;
+  }
+});
+
+// pressing on the plusMinusBtn
+plusMinus.addEventListener("click", () => {
+  // 1) if the last character in the operation string is an operator we need to return
+  if (operation.match(/[-+x\/]$/)) {
+    console.log("last is an operator");
+    console.log("last is " + operation.at(-1));
+    return;
+  }
+
+  if (allOperatorsRegEx.test(operation.slice(1))) {
+    // 2) handling plusMinus if there is an operator in the operation string
+    const operatorIndex = operation
+      .split("")
+      .findLastIndex((e) => allOperatorsRegEx.test(e));
+
+    let operator = operation[operatorIndex];
+    let operand1 = operation.slice(0, operatorIndex);
+    let operand2 = operation.slice(operatorIndex + 1);
+
+    console.log(`
+      operator: ${operator}
+      operand1: ${operand1}
+      operand2: ${operand2}
+      operation: ${operation}`);
+
+    if (operator === "-") {
+      operator = "+";
+      // operand2 *= -1;
+      operation = operand1 + operator + operand2;
+      display.textContent = operation;
+      console.log(operation);
+    } else {
+      operand2 *= -1;
+      operation = operand1 + operator + operand2;
+      display.textContent = operation;
+      console.log(operation);
+    }
+  } else {
+    // // 2) handling plusMinus if there is NO operator in the operation string
+    operation = (operation * -1).toString();
     display.textContent = operation;
   }
 });
