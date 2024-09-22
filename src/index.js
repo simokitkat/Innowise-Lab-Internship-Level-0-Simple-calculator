@@ -59,10 +59,14 @@ operatorsBtns.forEach((operatorBtn) => {
       } else if (operation.at(-1) === "-") {
         operation = operation.slice(0, -1) + "+";
         display.textContent = operation;
-      } else if (operatorsRegEx.test(operation.at(-1))) {
+      } else if (operation.at(-1) === "+") {
         operation = operation.slice(0, -1) + "-";
         display.textContent = operation;
-        console.log(operation);
+      } else if (operatorsRegEx.test(operation.at(-1))) {
+        console.log("Operator is x or /");
+
+        operation += e.target.textContent;
+        display.textContent = operation;
       } else if (
         amountOfOperators === 1 ||
         (amountOfMinusOperators === 1 && operation.at(-1) !== "-")
@@ -72,6 +76,8 @@ operatorsBtns.forEach((operatorBtn) => {
         operation += e.target.textContent;
         display.textContent = operation;
       }
+
+      console.log(operation);
       return;
     }
 
