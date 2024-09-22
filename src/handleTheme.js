@@ -1,6 +1,6 @@
-import { themeH1 } from "./index.js";
+import { themeH1 } from ".";
 
-themeH1.addEventListener("click", () => {
+export function handleTheme() {
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
@@ -8,4 +8,4 @@ themeH1.addEventListener("click", () => {
   } else {
     themeH1.textContent = "Dark Mode";
   }
-});
+}

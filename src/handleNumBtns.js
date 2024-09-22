@@ -1,6 +1,5 @@
 import {
   display,
-  nums,
   operation,
   updateOperation,
   resetBtn,
@@ -8,7 +7,8 @@ import {
 } from "./index.js";
 
 // handle clicking on the numbers buttons
-nums.forEach((num) => {
+
+export function handleNumBtn(num) {
   num.addEventListener("click", (e) => {
     //make sure result is empty
     if (result !== undefined) {
@@ -19,4 +19,4 @@ nums.forEach((num) => {
     display.textContent = operation;
     console.log(operation);
   });
-});
+}

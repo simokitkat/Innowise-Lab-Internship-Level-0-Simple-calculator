@@ -2,11 +2,10 @@ import {
   allOperatorsRegEx,
   display,
   operation,
-  percent,
   updateOperation,
 } from "./index.js";
 
-percent.addEventListener("click", () => {
+export function handlePercentBtn() {
   // 1) if the last character in the operation string is an operator we need to return
   if (allOperatorsRegEx.test(operation.at(-1))) {
     return;
@@ -33,4 +32,4 @@ percent.addEventListener("click", () => {
     updateOperation((operation / 100).toString());
     display.textContent = operation;
   }
-});
+}

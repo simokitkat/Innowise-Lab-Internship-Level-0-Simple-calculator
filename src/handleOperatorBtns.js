@@ -2,7 +2,6 @@ import {
   allOperatorsRegEx,
   display,
   operation,
-  operatorsBtns,
   operatorsRegEx,
   resetBtn,
   result,
@@ -11,7 +10,7 @@ import {
 } from "./index.js";
 import { handleOperations } from "./handleOperations.js";
 
-operatorsBtns.forEach((operatorBtn) => {
+export function handleOperatorBtn(operatorBtn) {
   operatorBtn.addEventListener("click", (e) => {
     const amountOfOperators = operation.match(operatorsRegEx)?.length;
     const amountOfMinusOperators = operation.slice(1).match(/-/g)?.length;
@@ -130,4 +129,4 @@ operatorsBtns.forEach((operatorBtn) => {
       }
     }
   });
-});
+}

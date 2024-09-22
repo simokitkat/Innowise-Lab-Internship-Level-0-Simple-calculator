@@ -1,4 +1,11 @@
-// import "./styles.css";
+import { handleNumBtn } from "./handleNumBtns";
+import { handleOperatorBtn } from "./handleOperatorBtns";
+import { handlePercentBtn } from "./handlePercentBtn";
+import { handlePlusMinusBtn } from "./handlePlusMinusBtn";
+import { handlePointBtn } from "./handlePointBtn";
+import { handleResetBtn } from "./handleResetBtn";
+import { handleTheme } from "./handleTheme";
+import "./styles.css";
 
 let result;
 let operation = "";
@@ -43,6 +50,7 @@ export {
 The plan is to make an operation that consists of two operands and one operator only. 
 The more operands we add after that, can be included using the result as one of the two possible operands for the operation.
 */
+
 /*
 Development Stages:
 [1] // handle clicking on the numbers buttons
@@ -53,3 +61,11 @@ Development Stages:
 [6] // handle clicking on the reset button
 [7] // handle theme
 */
+
+nums.forEach((num) => handleNumBtn(num));
+point.addEventListener("click", handlePointBtn);
+operatorsBtns.forEach((operator) => handleOperatorBtn(operator));
+percent.addEventListener("click", handlePercentBtn);
+plusMinus.addEventListener("click", handlePlusMinusBtn);
+resetBtn.addEventListener("click", handleResetBtn);
+themeH1.addEventListener("click", handleTheme);

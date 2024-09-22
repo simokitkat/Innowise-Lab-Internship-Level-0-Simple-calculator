@@ -2,11 +2,10 @@ import {
   allOperatorsRegEx,
   display,
   operation,
-  point,
   updateOperation,
 } from "./index.js";
 
-point.addEventListener("click", () => {
+export function handlePointBtn() {
   if (operation === "" || allOperatorsRegEx.test(operation.at(-1))) {
     updateOperation(operation + "0.");
     display.textContent = operation;
@@ -40,4 +39,4 @@ point.addEventListener("click", () => {
       }
     }
   }
-});
+}

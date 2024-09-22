@@ -2,13 +2,12 @@ import {
   allOperatorsRegEx,
   display,
   operation,
-  plusMinus,
   resetBtn,
   result,
   updateOperation,
 } from "./index.js";
 
-plusMinus.addEventListener("click", () => {
+export function handlePlusMinusBtn() {
   // 1) if the last character in the operation string is an operator we need to return
   if (operation.match(/[-+x/]$/)) {
     console.log("last is an operator");
@@ -61,4 +60,4 @@ plusMinus.addEventListener("click", () => {
     updateOperation((operation * -1).toString());
     display.textContent = operation;
   }
-});
+}

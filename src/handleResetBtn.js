@@ -1,7 +1,7 @@
-import { display, resetBtn, updateOperation, updateResult } from "./index.js";
+import { display, updateOperation, updateResult } from "./index.js";
 
-resetBtn.addEventListener("click", () => {
+export function handleResetBtn() {
   updateResult(undefined);
   updateOperation("");
   display.textContent = 0;
-});
+}
