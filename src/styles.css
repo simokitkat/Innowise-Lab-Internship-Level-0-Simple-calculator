@@ -3,20 +3,22 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    transition: 0.3s;
 }
 
 body {
     background-color: rgba(0, 0, 0, 0.1);
-    color: white;
 }
 
 main {
     min-height: 100vh;
-    padding: 1rem;
+    /* padding: 1rem; */
+    padding: 10rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .calculator {
@@ -35,6 +37,7 @@ main {
     align-items: center;
     justify-content: flex-end;
     font-size: 3.5rem;
+    color: white;
 }
 
 .grid {
@@ -58,7 +61,6 @@ main {
     cursor: pointer;
     background-color: gray;
     color: white;
-    transition: 0.3s;
 
     &:hover {
         filter: brightness(1.3);
@@ -75,4 +77,58 @@ main {
 
 .grid .dark-operator {
     background-color: rgba(128, 128, 128, 0.8)
+}
+
+/*******************
+** Theme Switcher ** 
+********************/
+
+
+
+h1 {
+    position: absolute;
+    font-size: 1rem;
+    top: 3rem;
+    word-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 2px solid orangered;
+
+    &:hover {
+        box-shadow: 1px 1px 34px 1px black;
+    }
+}
+
+body.dark {
+    background-color: black;
+
+
+    .calculator {
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 1px 1px 34px 1px white;
+    }
+
+    .display {
+        color: black;
+    }
+
+    .grid {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .grid button {
+        color: black;
+    }
+
+    h1 {
+        background-color: white;
+        color: black;
+
+        &:hover {
+            box-shadow: 1px 1px 34px 1px white;
+        }
+    }
 }

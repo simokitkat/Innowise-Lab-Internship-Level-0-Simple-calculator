@@ -1,6 +1,5 @@
 import { handleOperations } from "./handleOperations.js";
-import { resetCalculator } from "./resetCalculator.js";
-// import "./styles.css";
+import "./styles.css";
 
 let result;
 let operation = "";
@@ -15,6 +14,7 @@ const percent = document.querySelector(".percent");
 const display = document.querySelector(".display");
 const resetBtn = document.querySelector(".reset");
 const plusMinus = document.querySelector(".plus-minus");
+const themeH1 = document.querySelector("h1");
 
 /* 
 The plan is to make an operation that consists of two operands and one operator only. 
@@ -264,6 +264,16 @@ plusMinus.addEventListener("click", () => {
 
 // Reset Calculator
 resetBtn.addEventListener("click", () => {
-  [result, operation] = resetCalculator();
+  [result, operation] = [undefined, ""];
   display.textContent = 0;
+});
+
+themeH1.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    themeH1.textContent = "Light Mode";
+  } else {
+    themeH1.textContent = "Dark Mode";
+  }
 });
