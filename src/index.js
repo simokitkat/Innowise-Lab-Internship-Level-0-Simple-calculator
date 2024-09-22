@@ -1,5 +1,5 @@
 import { handleOperations } from "./handleOperations.js";
-import "./styles.css";
+// import "./styles.css";
 
 let result;
 let operation = "";
@@ -154,7 +154,7 @@ operatorsBtns.forEach((operatorBtn) => {
 });
 
 // Pressing on the point btn
-point.addEventListener("click", (e) => {
+point.addEventListener("click", () => {
   if (operation === "" || allOperatorsRegEx.test(operation.at(-1))) {
     operation += "0.";
     display.textContent = operation;
@@ -189,7 +189,7 @@ point.addEventListener("click", (e) => {
 });
 
 // Pressing on the percent btn
-percent.addEventListener("click", (e) => {
+percent.addEventListener("click", () => {
   // 1) if the last character in the operation string is an operator we need to return
   if (allOperatorsRegEx.test(operation.at(-1))) {
     return;
@@ -221,7 +221,7 @@ percent.addEventListener("click", (e) => {
 // pressing on the plusMinusBtn
 plusMinus.addEventListener("click", () => {
   // 1) if the last character in the operation string is an operator we need to return
-  if (operation.match(/[-+x\/]$/)) {
+  if (operation.match(/[-+x/]$/)) {
     console.log("last is an operator");
     console.log("last is " + operation.at(-1));
     return;
