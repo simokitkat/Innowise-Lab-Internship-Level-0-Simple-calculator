@@ -234,16 +234,29 @@ plusMinus.addEventListener("click", () => {
   }
 
   if (allOperatorsRegEx.test(operation.slice(1))) {
+    // Checking if result is defined
+    if (result !== undefined) {
+      const temp = result;
+      resetBtn.click();
+      operation = (temp * -1).toString();
+      display.textContent = operation;
+      console.log(`now operation is ${operation}`);
+      return;
+    }
+
     // 2) handling plusMinus if there is an operator in the operation string
     const operatorIndex = operation
       .split("")
-      .findLastIndex((e) => allOperatorsRegEx.test(e));
+      .findIndex((element) => allOperatorsRegEx.test(element));
+
+    console.log(operatorIndex);
 
     let operator = operation[operatorIndex];
     let operand1 = operation.slice(0, operatorIndex);
     let operand2 = operation.slice(operatorIndex + 1);
 
     console.log(`
+      operationIndex: ${operatorIndex}
       operator: ${operator}
       operand1: ${operand1}
       operand2: ${operand2}
