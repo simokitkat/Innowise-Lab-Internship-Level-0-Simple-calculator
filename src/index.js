@@ -1,10 +1,10 @@
-import { handleNumBtn } from "./handleNumBtns";
-import { handleOperatorBtn } from "./handleOperatorBtns";
-import { handlePercentBtn } from "./handlePercentBtn";
-import { handlePlusMinusBtn } from "./handlePlusMinusBtn";
-import { handlePointBtn } from "./handlePointBtn";
-import { handleResetBtn } from "./handleResetBtn";
-import { handleTheme } from "./handleTheme";
+import { handleNumBtn } from "./handleNumBtns.js";
+import { handleOperatorBtn } from "./handleOperatorBtns.js";
+import { handlePercentBtn } from "./handlePercentBtn.js";
+import { handlePlusMinusBtn } from "./handlePlusMinusBtn.js";
+import { handlePointBtn } from "./handlePointBtn.js";
+import { handleResetBtn } from "./handleResetBtn.js";
+import { handleTheme } from "./handleTheme.js";
 import "./styles.css";
 
 let result;

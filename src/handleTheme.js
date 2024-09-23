@@ -1,4 +1,4 @@
-import { themeH1 } from ".";
+import { themeH1 } from "./index.js";
 
 export function handleTheme() {
   document.body.classList.toggle("dark");

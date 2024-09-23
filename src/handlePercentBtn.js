@@ -2,10 +2,22 @@ import {
   allOperatorsRegEx,
   display,
   operation,
+  resetBtn,
+  result,
   updateOperation,
 } from "./index.js";
 
 export function handlePercentBtn() {
+  // Checking if result is defined
+  if (result !== undefined) {
+    const temp = result;
+    resetBtn.click();
+    updateOperation((temp / 100).toString());
+    display.textContent = operation;
+    console.log(`now operation is ${operation}`);
+    return;
+  }
+
   // 1) if the last character in the operation string is an operator we need to return
   if (allOperatorsRegEx.test(operation.at(-1))) {
     return;
