@@ -24,7 +24,7 @@
 
 - eslint.config.mjs where you can find all the eslint configurations for the project
 
-- .gitignore where you can find all the file that aren't tracked by git
+- .gitignore where you can find all the files that aren't tracked by git
 
 - README.md where you can find the description of the project
 
@@ -35,3 +35,13 @@ Here you'll find index.html, styles.css and the JavaScript files that you need t
 3- The `build` folder:
 
 Here you'll find the two files that you need to check the project. index.html and a dinamically named JavaScript file.
+
+## App description
+
+In this project, I created a basic calculator using html, css, and javascript.
+
+The calculator handles 2 operands only. In case of willing to use more operands, the result can be used as one of the operands.
+
+The calculator can do basic operations like addition, subtraction, multiplication, and division. It also supports the percent and plus/minus operators.
+
+The calculator also includes a theme switcher that allows the user to switch between light and dark mode.
